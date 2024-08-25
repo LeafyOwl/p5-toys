@@ -6,9 +6,6 @@ let lastMinute = -1;
 let birdStartTime = 0; 
 let pendulumAngle = 0;
 
-/**
- * Initializes the canvas and sets the angle mode for rotation calculations.
- */
 function setup() {
   createCanvas(500, 600);
   angleMode(DEGREES);
@@ -57,7 +54,7 @@ function draw() {
   fill("#28211D");
   rect(-25, -160, 50, 60, 23, 23);
 
-  // Handle the bird's movement based on the current time
+  // Handle the yellow bird's movement based on the current time
   let currentMinute = minute();
   if (currentMinute !== lastMinute) {
     birdOut = true;
@@ -81,7 +78,7 @@ function draw() {
   pendulumAngle = sin(frameCount * (360 / 240)) * 30;
   drawPendulum(0, 110, pendulumAngle);
 
-  // Draw the clock base and surrounding decorations
+  // Draw the clock base and trees
   noStroke();
   fill("#672500");
   quad(-90, 110, -70, 130, 70, 130, 90, 110);
@@ -101,9 +98,9 @@ function draw() {
 /**
  * Draws a pendulum at the specified position with a given angle.
  *
- * @param {number} x - The x-coordinate of the pendulum's pivot.
- * @param {number} y - The y-coordinate of the pendulum's pivot.
- * @param {number} angle - The angle of the pendulum's swing.
+ * The x-coordinate of the pendulum's pivot.
+ * The y-coordinate of the pendulum's pivot.
+ * The angle of the pendulum's swing.
  */
 function drawPendulum(x, y, angle) {
   push();
@@ -123,11 +120,10 @@ function drawPendulum(x, y, angle) {
 }
 
 /**
- * Draws a gradient circle centered at the specified coordinates.
+ * Draws a gradient circle as the clock face.
  *
- * @param {number} x - The x-coordinate of the circle's center.
- * @param {number} y - The y-coordinate of the circle's center.
- * @param {number} diameter - The diameter of the gradient circle.
+ * The x, y-coordinate of the circle's center.
+ * The diameter of the gradient circle.
  */
 function drawGradient(x, y, diameter) {
   let innerColor = color('#F0DCBB');
@@ -200,14 +196,12 @@ function drawGradient(x, y, diameter) {
   line(0, -30, cos(minuteAngle) * 60, sin(minuteAngle) * 60 - 30);
   strokeWeight(2);
   line(0, -30, cos(secondAngle) * 70, sin(secondAngle) * 70 - 30);
-
-  pop();
 }
 
 /**
- * Draws a bird at the specified y-coordinate.
+ * Draws the yellow bird in the clock.
  *
- * @param {number} y - The y-coordinate of the bird's position.
+ The y-coordinate of the bird's position.
  */
 function drawBird(y) {
   push();
@@ -241,9 +235,8 @@ function drawBird(y) {
 /**
  * Draws a swinging bird at the specified position with a given angle.
  *
- * @param {number} x - The x-coordinate of the bird's pivot.
- * @param {number} y - The y-coordinate of the bird's pivot.
- * @param {number} angle - The angle of the bird's swing.
+ * The x, y-coordinate of the bird's pivot.
+ * The angle of the bird's swing.
  */
 function drawSwingingBird(x, y, angle) {
   push();
