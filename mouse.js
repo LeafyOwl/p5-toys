@@ -34,7 +34,7 @@ function draw() {
     //noLoop();
   }
 
-  
+
   const r = 5;
   let x_new = (mouseX - width / 2);
   let y_new = (mouseY - height / 2);

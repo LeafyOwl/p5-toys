@@ -8,10 +8,10 @@ let img, maskImg;
 function setup() {
   createCanvas(500, 600);
   angleMode(DEGREES);
-  
+
   // 创建一个图像缓冲区
   img = createGraphics(400, 400);
-  
+
   // 绘制一个矩形（将要被减去部分）
   img.fill('#CC7E45');
   img.rect(-110 + width / 2, -130 + height / 2, 220, 140);
@@ -21,29 +21,29 @@ function setup() {
   maskImg.fill(0); // 设置为黑色以遮挡
   maskImg.rect(0, 0, 400, 400); // 先填满整个区域
   maskImg.fill(255); // 白色部分是保留区域
-  
+
   // 绘制要减去的拱门
   maskImg.rect(-25 + width / 2, -160 + height / 2, 50, 60, 23, 23);
 
   // 应用蒙版效果
   img.mask(maskImg);
-  
+
   // 不在 setup 中显示图像，而是在 draw 中显示
 }
 
 function draw() {
   background(111); // 棕色背景
-  
+
   // 显示 setup 中创建的图像
   image(img, 0, 0);  // 这将显示应用了蒙版的内容
-  
+
   // 其他静态部分绘制
   translate(width / 2, height / 2);
   fill('#CC7E45');
   rect(-110, -130, 220, 140);
   fill('#E8DBD2');
   rect(-110, -60, 220, 150);
-  
+
   // 动态部分：时钟、鸟动画等
   drawClockFace(); // 时钟绘制函数
   animateBird();   // 鸟的动画逻辑
